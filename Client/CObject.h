@@ -1,6 +1,7 @@
 #pragma once
 
 class CCollider;
+class CAnimator;
 
 class CObject
 {
@@ -11,6 +12,7 @@ private:
 	Vec2 m_vScale = {};
 
 	CCollider* m_pCollider = nullptr;
+	CAnimator* m_pAnimator = nullptr;
 
 	bool m_bAlive = true;
 
@@ -26,11 +28,14 @@ public:
 
 
 	CCollider* GetCollider() { return m_pCollider; }
+	CAnimator* GetAnimator() { return m_pAnimator; }
 
 	bool IsDead() {	return !m_bAlive;}
 
 
 	void CreateCollider();
+	void CreateAnimator();
+
 	void component_render(HDC _dc);
 
 	virtual CObject* Clone() = 0;

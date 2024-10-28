@@ -10,16 +10,21 @@
 #include "CTexture.h"
 #include "CResMgr.h"
 #include "CCollider.h"
+#include "CAnimator.h"
 
 CPlayer::CPlayer()
 {	// Texture 로딩하기
 	
-	m_pTex = CResMgr::GetInstance()->LoadTexture(L"PlayerTex", L"texture\\Player.bmp");
+	//m_pTex = CResMgr::GetInstance()->LoadTexture(L"PlayerTex", L"texture\\Player.bmp");
 
 	CreateCollider();
 
 	GetCollider()->SetOffSetPos(Vec2(0.f, 12.f));
 	GetCollider()->SetScale(Vec2(20.f, 40.f));
+
+	m_pTex = CResMgr::GetInstance()->LoadTexture(L"PlayerTex", L"texture\\link_0.bmp");
+	CreateAnimator();
+	GetAnimator()->CreateAnimation(m_pTex, Vec2(0.f, 260.f), Vec2(60.0f, 65.0f), Vec2(60.0f, 0.f) , 10);
 }
 
 CPlayer::~CPlayer()
